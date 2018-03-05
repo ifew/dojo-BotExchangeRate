@@ -68,5 +68,14 @@ namespace api.UnitTest
 
             Assert.Equal(32171.62, actualResult);
         }
+
+        [Fact]
+        public void When_Exchange_Rate_0USD_Should_Be_0THB()
+        {
+            ExchangeRateService exchangeRate = new ExchangeRateService();
+            double actualResult = exchangeRate.ExchangeRate(0.00);
+
+            Assert.Equal(0, actualResult);
+        }
     }
 }
