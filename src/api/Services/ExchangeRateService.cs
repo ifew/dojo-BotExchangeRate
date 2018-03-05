@@ -6,9 +6,13 @@ namespace api.Services
     {
         public double ExchangeRate(double inputAmountUSD) 
         {
-            double inputAmount = inputAmountUSD * 31.5408000;
-            double fee = _GetFee(inputAmountUSD);
-            return CalculateAmountWithFee(inputAmount, fee);
+            if(inputAmountUSD < 1) {
+                double inputAmount = inputAmountUSD * 31.5408000;
+                double fee = _GetFee(inputAmountUSD);
+                return CalculateAmountWithFee(inputAmount, fee);
+            } else {
+                return 0;
+            }
         }
         public double CalculateAmountWithFee(double inputAmount, double fee)
         {
