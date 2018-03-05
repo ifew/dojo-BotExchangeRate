@@ -59,5 +59,14 @@ namespace api.UnitTest
 
             Assert.Equal(16117.98, actualResult);
         }
+        
+        [Fact]
+        public void When_Exchange_Rate_1000USD_To_31540_800000THB_Plus_Fee_Should_Be_32171_62THB()
+        {
+            ExchangeRateService exchangeRate = new ExchangeRateService();
+            double actualResult = exchangeRate.ExchangeRate(1000.00);
+
+            Assert.Equal(32171.62, actualResult);
+        }
     }
 }
