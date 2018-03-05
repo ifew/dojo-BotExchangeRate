@@ -8,7 +8,7 @@ namespace api.Services
         {
             double amountWithFee = inputAmount + (inputAmount * 0.025);
 
-            amountWithFee = Math.Round(amountWithFee, 2, MidpointRounding.AwayFromZero);
+            amountWithFee = Math.Round(Math.Ceiling(amountWithFee * 100)/100, 2, MidpointRounding.AwayFromZero);
 
             return amountWithFee;
         }
