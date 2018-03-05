@@ -4,11 +4,13 @@ namespace api.Services
 {
     public class ExchangeRateService
     {
-        [Fact]
-        public void When_Exchange_Rate_31_5408000_Plus_Fee_Should_Be_32_33()
+        public double CalculateAmountWithFee(double inputAmount)
         {
-            ExchangeRate exchangeRate = new ExchangeRate();
-            
+            double amountWithFee = inputAmount + (inputAmount * 0.025);
+
+            amountWithFee = Math.Round(amountWithFee, 2, MidpointRounding.AwayFromZero);
+
+            return amountWithFee;
         }
     }
 }
