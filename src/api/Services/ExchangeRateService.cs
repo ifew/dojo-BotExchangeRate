@@ -8,9 +8,14 @@ namespace api.Services
         {
             double amountWithFee = inputAmount + (inputAmount * 0.025);
 
-            amountWithFee = Math.Round(Math.Ceiling(amountWithFee * 100)/100, 2, MidpointRounding.AwayFromZero);
+            return _RoundCeiling2Digit(amountWithFee);
+        }
 
-            return amountWithFee;
+        private double _RoundCeiling2Digit(double inputAmount)
+        {
+            double result = Math.Round(Math.Ceiling(inputAmount * 100)/100, 2, MidpointRounding.AwayFromZero);
+
+            return result;
         }
     }
 }
