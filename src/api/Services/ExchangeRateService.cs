@@ -6,7 +6,7 @@ namespace api.Services
     {
         public double ExchangeRate(double inputAmountUSD)
         {
-            if (inputAmountUSD < 1)
+            if (inputAmountUSD >= 1)
             {
                 double inputAmount = inputAmountUSD * 31.5408000;
                 double fee = _GetFee(inputAmountUSD);
