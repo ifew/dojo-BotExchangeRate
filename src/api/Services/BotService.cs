@@ -8,8 +8,13 @@ namespace api.Services
 {
     public class BotService
     {
-        private static readonly HttpClient client = new HttpClient();
-        
+        private static HttpClient _client;
+ 
+        public BotService(HttpClient httpClient)
+        {
+            _client = httpClient;
+        }
+
         public double GetSellingAverageDay(string date)
         {
             string currency = "USD";
@@ -22,7 +27,6 @@ namespace api.Services
 
         public async Task<RootObject> CallGet(string url)
         {
-            HttpClient _client = new HttpClient();
             _client.DefaultRequestHeaders.Add("api-key", "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm");
             var response = await _client.GetStringAsync(url);
             var repositories = JsonConvert.DeserializeObject<RootObject>(response);

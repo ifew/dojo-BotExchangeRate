@@ -1,12 +1,20 @@
 using System;
+using System.Net.Http;
 
 namespace api.Services
 {
     public class ExchangeRateService
     {
+        private static HttpClient _client;
+
+        public ExchangeRateService(HttpClient httpClient)
+        {
+            _client = httpClient;
+        }
+        
         double sellingPriceBOT = 0;
         public void GetSellingPrice(string date) {
-            BotService botService = new BotService();
+            BotService botService = new BotService(_client);
             sellingPriceBOT = botService.GetSellingAverageDay(date);
         }
 
