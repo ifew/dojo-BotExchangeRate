@@ -4,10 +4,15 @@ namespace api.Services
 {
     public class ExchangeRateService
     {
-        public double ExchangeRate(double inputAmountUSD)
-        {
+        double sellingPriceBOT = 0;
+        public void GetSellingPrice(string date) {
             BotService botService = new BotService();
-            double sellingPriceBOT = botService.GetSellingAverageDay("2018-02-01");
+            sellingPriceBOT = botService.GetSellingAverageDay(date);
+        }
+
+        public double ExchangeRate(double inputAmountUSD, string date)
+        {
+            GetSellingPrice(date);
 
             if (inputAmountUSD >= 1)
             {
