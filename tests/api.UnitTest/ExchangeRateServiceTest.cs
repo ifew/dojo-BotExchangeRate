@@ -18,7 +18,7 @@ namespace api.UnitTest
         [InlineData(1000, 32171.62)]
         public void When_Exchange_Rate_As_Of_1Feb2018_And_Plus_Fee(double inputAmountUSD, double expectedAmountTHB)
         {
-            double actualResult = _exchangeRate.ExchangeRate(inputAmountUSD);
+            double actualResult = _exchangeRate.ExchangeRate(inputAmountUSD, "2018-02-01");
 
             Assert.Equal(expectedAmountTHB, actualResult);
         }
@@ -26,7 +26,7 @@ namespace api.UnitTest
         [Fact]
         public void When_Exchange_Rate_0USD_Should_Be_0THB()
         {
-            double actualResult = _exchangeRate.ExchangeRate(0.00);
+            double actualResult = _exchangeRate.ExchangeRate(0.00, "2018-02-01");
 
             Assert.Equal(0, actualResult);
         }
@@ -34,7 +34,7 @@ namespace api.UnitTest
         [Fact]
         public void When_Exchange_Rate_0_1USD_Should_Be_0THB()
         {
-            double actualResult = _exchangeRate.ExchangeRate(0.10);
+            double actualResult = _exchangeRate.ExchangeRate(0.10, "2018-02-01");
 
             Assert.Equal(0, actualResult);
         }
