@@ -6,9 +6,12 @@ namespace api.Services
     {
         public double ExchangeRate(double inputAmountUSD)
         {
+            BotService botService = new BotService();
+            double sellingPriceBOT = botService.GetSellingAverageDay("2018-02-01");
+
             if (inputAmountUSD >= 1)
             {
-                double inputAmount = inputAmountUSD * 31.5408000;
+                double inputAmount = inputAmountUSD * sellingPriceBOT;
                 double fee = _GetFee(inputAmountUSD);
                 return CalculateAmountWithFee(inputAmount, fee);
             }
