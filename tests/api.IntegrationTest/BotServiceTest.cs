@@ -10,7 +10,7 @@ namespace api.IntegrationTest
         public void When_Selling_Amount_As_Of_1Feb2018_Should_Be_31_5408000THB()
         {
             BotService botService = new BotService();
-            actualSelling = botService.GetSellingAverageDay("2018-02-01");
+            double actualSelling = botService.GetSellingAverageDay("2018-02-01");
 
             Assert.Equal(31.5408000, actualSelling);
         }
