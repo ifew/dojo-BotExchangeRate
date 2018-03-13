@@ -6,11 +6,19 @@
 <div style="white-space: pre;background-color: #EEF4ED;">{</div>
 <div style="white-space: pre;background-color: #EEF4ED;">    public class ExchangeRateService</div>
 <div style="white-space: pre;background-color: #EEF4ED;">    {</div>
-<div style="white-space: pre;background-color: #EEF4ED;">        public double ExchangeRate(double inputAmountUSD)</div>
+<div style="white-space: pre;background-color: #D2EACE;">        double sellingPriceBOT = 0;</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        public void GetSellingPrice(string date) {</div>
+<div style="white-space: pre;background-color: #D2EACE;">            BotService botService = new BotService();</div>
+<div style="white-space: pre;background-color: #D2EACE;">            sellingPriceBOT = botService.GetSellingAverageDay(date);</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        }</div>
+<div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        public double ExchangeRate(double inputAmountUSD, string date)</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        {</div>
+<div style="white-space: pre;background-color: #D2EACE;">            GetSellingPrice(date);</div>
+<div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>
 <div style="white-space: pre;background-color: #D2EACE;">            if (inputAmountUSD &gt;= 1)</div>
 <div style="white-space: pre;background-color: #EEF4ED;">            {</div>
-<div style="white-space: pre;background-color: #D2EACE;">                double inputAmount = inputAmountUSD * 31.5408000;</div>
+<div style="white-space: pre;background-color: #D2EACE;">                double inputAmount = inputAmountUSD * sellingPriceBOT;</div>
 <div style="white-space: pre;background-color: #D2EACE;">                double fee = _GetFee(inputAmountUSD);</div>
 <div style="white-space: pre;background-color: #D2EACE;">                return CalculateAmountWithFee(inputAmount, fee);</div>
 <div style="white-space: pre;background-color: #EEF4ED;">            }</div>
