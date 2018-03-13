@@ -1,14 +1,22 @@
 <html>
 <body style="font-family: monospace;">
 <div style="white-space: pre;background-color: #EEF4ED;">using System;</div>
+<div style="white-space: pre;background-color: #EEF4ED;">using System.Net.Http;</div>
 <div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>
 <div style="white-space: pre;background-color: #EEF4ED;">namespace api.Services</div>
 <div style="white-space: pre;background-color: #EEF4ED;">{</div>
 <div style="white-space: pre;background-color: #EEF4ED;">    public class ExchangeRateService</div>
 <div style="white-space: pre;background-color: #EEF4ED;">    {</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        private static HttpClient _client;</div>
+<div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>
+<div style="white-space: pre;background-color: #D2EACE;">        public ExchangeRateService(HttpClient httpClient)</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        {</div>
+<div style="white-space: pre;background-color: #D2EACE;">            _client = httpClient;</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        }</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        </div>
 <div style="white-space: pre;background-color: #D2EACE;">        double sellingPriceBOT = 0;</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        public void GetSellingPrice(string date) {</div>
-<div style="white-space: pre;background-color: #D2EACE;">            BotService botService = new BotService();</div>
+<div style="white-space: pre;background-color: #D2EACE;">            BotService botService = new BotService(_client);</div>
 <div style="white-space: pre;background-color: #D2EACE;">            sellingPriceBOT = botService.GetSellingAverageDay(date);</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        }</div>
 <div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>

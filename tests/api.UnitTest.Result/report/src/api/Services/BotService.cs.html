@@ -10,8 +10,13 @@
 <div style="white-space: pre;background-color: #EEF4ED;">{</div>
 <div style="white-space: pre;background-color: #EEF4ED;">    public class BotService</div>
 <div style="white-space: pre;background-color: #EEF4ED;">    {</div>
-<div style="white-space: pre;background-color: #D2EACE;">        private static readonly HttpClient client = new HttpClient();</div>
-<div style="white-space: pre;background-color: #EEF4ED;">        </div>
+<div style="white-space: pre;background-color: #EEF4ED;">        private static HttpClient _client;</div>
+<div style="white-space: pre;background-color: #EEF4ED;"> </div>
+<div style="white-space: pre;background-color: #D2EACE;">        public BotService(HttpClient httpClient)</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        {</div>
+<div style="white-space: pre;background-color: #D2EACE;">            _client = httpClient;</div>
+<div style="white-space: pre;background-color: #EEF4ED;">        }</div>
+<div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        public double GetSellingAverageDay(string date)</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        {</div>
 <div style="white-space: pre;background-color: #D2EACE;">            string currency = &quot;USD&quot;;</div>
@@ -24,7 +29,6 @@
 <div style="white-space: pre;background-color: #EEF4ED;">&nbsp;</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        public async Task&lt;RootObject&gt; CallGet(string url)</div>
 <div style="white-space: pre;background-color: #EEF4ED;">        {</div>
-<div style="white-space: pre;background-color: #D2EACE;">            HttpClient _client = new HttpClient();</div>
 <div style="white-space: pre;background-color: #D2EACE;">            _client.DefaultRequestHeaders.Add(&quot;api-key&quot;, &quot;U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm&quot;);</div>
 <div style="white-space: pre;background-color: #D2EACE;">            var response = await _client.GetStringAsync(url);</div>
 <div style="white-space: pre;background-color: #D2EACE;">            var repositories = JsonConvert.DeserializeObject&lt;RootObject&gt;(response);</div>
